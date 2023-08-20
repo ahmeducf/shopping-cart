@@ -1,11 +1,11 @@
-nav.headerNav {
+.headerNav {
   display: flex;
   justify-content: center;
   align-items: center;
   flex: 30%;
 }
 
-nav.headerNav ul {
+.headerNav ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -19,7 +19,7 @@ nav.headerNav ul {
 }
 
 .navItem {
-  transition: all 0.3s;
+  transition: all 0.3s ease-in-out;
 }
 
 .navItem:hover {
@@ -29,9 +29,21 @@ nav.headerNav ul {
 .navItemLink {
   padding-bottom: 4px;
   border-bottom: 3px solid transparent;
-  transition: all 0.3s;
+  transition: all 0.3s ease-in-out;
 }
 
 .active {
   border-bottom: 3px solid #fff;
+}
+
+@media (max-width: 500px) {
+  .headerNav {
+    flex: 100%;
+    grid-column: 1 / 3;
+    grid-row: 2 / 3;
+  }
+
+  .headerNav ul {
+    padding: 0;
+  }
 }

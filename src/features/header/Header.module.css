@@ -1,4 +1,4 @@
-header.siteHeader {
+.siteHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -12,4 +12,18 @@ header.siteHeader {
 .logo {
   flex: 50%;
   min-width: 124px;
+}
+
+@media (max-width: 500px) {
+  .siteHeader {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: 1fr 1fr;
+    gap: 0;
+  }
+
+  .logo {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+  }
 }
