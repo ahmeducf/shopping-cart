@@ -1,0 +1,14 @@
+.cart {
+  flex: 20%;
+  display: flex;
+  justify-content: flex-end;
+  transition: all 0.3s;
+}
+
+.iconContainer {
+  font-size: 18px;
+}
+
+.iconContainer:hover {
+  transform: scale(1.1);
+}

@@ -75,6 +75,8 @@
 
 :root {
   --main-bg-color: #f3f4f6;
+  --header-bg-color: #000;
+  --header-text-color: #fff;
 }
 
 /* Global */
