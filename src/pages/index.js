@@ -1,5 +1,5 @@
 export { default as Root } from './Root';
-export { default as Home } from './Home';
+export { default as Home } from './home/Home';
 export { default as About } from './About';
 export { default as Products } from './Products';
 export { default as Product } from './Product';
