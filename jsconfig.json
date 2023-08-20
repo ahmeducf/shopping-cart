@@ -2,8 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./src"
   },
-  "paths": {
-    "@features/*": ["features/*"],
-    "@components/*": ["components/*"],
+  "typeAcquisition": {
+    "include": ["vitest"]
   }
 }
