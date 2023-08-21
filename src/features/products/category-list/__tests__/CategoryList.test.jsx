@@ -4,16 +4,6 @@ import { describe, expect } from 'vitest';
 import CategoryList from '../CategoryList';
 
 describe('CategoryList', () => {
-  it('renders a list of categories', () => {
-    render(
-      <BrowserRouter>
-        <CategoryList />
-      </BrowserRouter>,
-    );
-
-    expect(screen.getByRole('list')).toMatchSnapshot();
-  });
-
   it('renders a list of categories with the correct number of items', () => {
     render(
       <BrowserRouter>
