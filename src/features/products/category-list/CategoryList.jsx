@@ -1,7 +1,19 @@
-import { faBagShopping, faLightbulb, faShirt, faStar } from '@fortawesome/free-solid-svg-icons';
+import {
+  faBagShopping,
+  faLightbulb,
+  faShirt,
+  faStar,
+} from '@fortawesome/free-solid-svg-icons';
 import { faGem } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { categoryList, listItem, btn, iconWrapper, name } from './CategoryList.module.css';
+import {
+  categoryList,
+  listItem,
+  btn,
+  iconWrapper,
+  name,
+  active,
+} from './CategoryList.module.css';
 
 function CategoryList() {
   const categories = [
@@ -12,10 +24,17 @@ function CategoryList() {
     { id: 5, name: "Women's clothing", icon: faBagShopping },
   ];
 
+  const activeCategory = categories[0];
+
   return (
     <ul className={categoryList}>
       {categories.map((category) => (
-        <li key={category.id} className={listItem}>
+        <li
+          key={category.id}
+          className={`${listItem} ${
+            activeCategory.id === category.id ? active : ''
+          }`}
+        >
           <button type="button" className={btn}>
             <span className={iconWrapper}>
               <FontAwesomeIcon icon={category.icon} />

@@ -1,17 +1,46 @@
 .categoryList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .listItem {
+  color: #fff;
+  cursor: pointer;
 }
 
 .btn {
-
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  color: #fff;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 .iconWrapper {
+  width: 38px;
+  height: 38px;
+  background-color: rgb(32, 32, 32);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition:
+    background-color 0.5s ease,
+    color 0.5s ease;
+}
 
+.listItem.active .iconWrapper,
+.listItem:hover .iconWrapper {
+  background-color: #fff;
+  color: #000;
 }
 
 .name {
-  
+  font-size: 1rem;
+  font-weight: 500;
 }
