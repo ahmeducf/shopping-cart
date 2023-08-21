@@ -75,8 +75,10 @@
 
 :root {
   --main-bg-color: #f3f4f6;
-  --header-bg-color: #000;
+  --header-bg-color: rgb(15, 16, 17);
   --header-text-color: #fff;
+  --products-sidebar-bg-color: rgb(15, 16, 17);
+  --products-sidebar-text-color: #fff;
 }
 
 /* Global */
@@ -111,9 +113,18 @@ body {
   font-family: inherit;
 }
 
+*:focus-visible {
+  border: 2px solid #fff !important;
+}
+
 a {
   text-decoration: none;
   color: inherit;
+}
+
+a:focus-visible {
+  border: 2px solid #fff !important;
+  outline: none !important;
 }
 
 ul {
@@ -124,6 +135,17 @@ img {
   display: block;
   width: 100%;
   height: auto;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 /* Typography */
