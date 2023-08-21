@@ -55,4 +55,26 @@ describe('Products', () => {
       screen.getByRole('list', { name: /categories/i }),
     ).toBeInTheDocument();
   });
+
+  it('renders a grid of products', () => {
+    render(
+      <BrowserRouter>
+        <Products />
+      </BrowserRouter>,
+    );
+
+    expect(
+      screen.getByRole('list', { name: /^products section$/i }),
+    ).toBeInTheDocument();
+  });
+
+  it('renders a grid of products with a default heading "All"', () => {
+    render(
+      <BrowserRouter>
+        <Products />
+      </BrowserRouter>,
+    );
+
+    expect(screen.getByRole('heading', { name: /all/i })).toBeInTheDocument();
+  });
 });
