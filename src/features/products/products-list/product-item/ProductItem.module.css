@@ -1,0 +1,156 @@
+.productItem {
+  border-radius: 18px;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.productItem:hover {
+  transform: scale(1.05);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  height: 100%;
+}
+
+.card > a {
+  background-color: #fff;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.card > a:focus-visible {
+  border: 2px solid #000 !important;
+}
+
+.cardImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.cardImage img {
+  height: 200px;
+  width: auto;
+  padding: 20px;
+  object-fit: cover;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+}
+
+.cardContent {
+  background-color: rgb(15, 16, 17);
+  color: white;
+  padding: 20px;
+  padding-top: 14px;
+  border-bottom-left-radius: 18px;
+  border-bottom-right-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.countAndPrice {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.countWrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #302f2f;
+}
+
+.countButton {
+  width: 30px;
+  height: 30px;
+  border: none;
+  outline: none;
+  background-color: rgb(36, 36, 36);
+  color: rgb(153, 153, 153);
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    color 0.3s ease-in-out,
+    background-color 0.3s ease-in-out;
+}
+
+.countButton:first-of-type {
+  border-right: 1px solid #302f2f;
+}
+
+.countButton:last-of-type {
+  border-left: 1px solid #302f2f;
+}
+
+.countButton:hover {
+  font-size: 2.2rem;
+}
+
+.countInput {
+  background-color: rgb(36, 36, 36);
+  color: rgb(153, 153, 153);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  width: 40px;
+  height: 30px;
+  border: none;
+  outline: none;
+  text-align: center;
+}
+
+.priceWrapper {
+}
+
+.priceValue {
+  color: rgb(153, 153, 153);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.productTitle {
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.addToCartButton {
+  background-color: #2e7d32;
+  color: white;
+  border-radius: 5px;
+  padding: 4px 12px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.75;
+  text-transform: uppercase;
+  cursor: pointer;
+  max-width: 200px;
+  border: none;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease-in-out;
+}
+
+.addToCartButton:hover {
+  background-color: #1b5e20;
+}
