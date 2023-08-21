@@ -1,0 +1,136 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CategoryList > renders a list of categories 1`] = `
+<ul>
+  <li>
+    <button
+      type="button"
+    >
+      <span>
+        <svg
+          aria-hidden="true"
+          class="svg-inline--fa fa-star "
+          data-icon="star"
+          data-prefix="fas"
+          focusable="false"
+          role="img"
+          viewBox="0 0 576 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"
+            fill="currentColor"
+          />
+        </svg>
+      </span>
+      <span>
+        All
+      </span>
+    </button>
+  </li>
+  <li>
+    <button
+      type="button"
+    >
+      <span>
+        <svg
+          aria-hidden="true"
+          class="svg-inline--fa fa-lightbulb "
+          data-icon="lightbulb"
+          data-prefix="fas"
+          focusable="false"
+          role="img"
+          viewBox="0 0 384 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M272 384c9.6-31.9 29.5-59.1 49.2-86.2l0 0c5.2-7.1 10.4-14.2 15.4-21.4c19.8-28.5 31.4-63 31.4-100.3C368 78.8 289.2 0 192 0S16 78.8 16 176c0 37.3 11.6 71.9 31.4 100.3c5 7.2 10.2 14.3 15.4 21.4l0 0c19.8 27.1 39.7 54.4 49.2 86.2H272zM192 512c44.2 0 80-35.8 80-80V416H112v16c0 44.2 35.8 80 80 80zM112 176c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-61.9 50.1-112 112-112c8.8 0 16 7.2 16 16s-7.2 16-16 16c-44.2 0-80 35.8-80 80z"
+            fill="currentColor"
+          />
+        </svg>
+      </span>
+      <span>
+        Electronics
+      </span>
+    </button>
+  </li>
+  <li>
+    <button
+      type="button"
+    >
+      <span>
+        <svg
+          aria-hidden="true"
+          class="svg-inline--fa fa-gem "
+          data-icon="gem"
+          data-prefix="far"
+          focusable="false"
+          role="img"
+          viewBox="0 0 512 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M168.5 72L256 165l87.5-93h-175zM383.9 99.1L311.5 176h129L383.9 99.1zm50 124.9H256 78.1L256 420.3 433.9 224zM71.5 176h129L128.1 99.1 71.5 176zm434.3 40.1l-232 256c-4.5 5-11 7.9-17.8 7.9s-13.2-2.9-17.8-7.9l-232-256c-7.7-8.5-8.3-21.2-1.5-30.4l112-152c4.5-6.1 11.7-9.8 19.3-9.8H376c7.6 0 14.8 3.6 19.3 9.8l112 152c6.8 9.2 6.1 21.9-1.5 30.4z"
+            fill="currentColor"
+          />
+        </svg>
+      </span>
+      <span>
+        Jewelry
+      </span>
+    </button>
+  </li>
+  <li>
+    <button
+      type="button"
+    >
+      <span>
+        <svg
+          aria-hidden="true"
+          class="svg-inline--fa fa-shirt "
+          data-icon="shirt"
+          data-prefix="fas"
+          focusable="false"
+          role="img"
+          viewBox="0 0 640 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M211.8 0c7.8 0 14.3 5.7 16.7 13.2C240.8 51.9 277.1 80 320 80s79.2-28.1 91.5-66.8C413.9 5.7 420.4 0 428.2 0h12.6c22.5 0 44.2 7.9 61.5 22.3L628.5 127.4c6.6 5.5 10.7 13.5 11.4 22.1s-2.1 17.1-7.8 23.6l-56 64c-11.4 13.1-31.2 14.6-44.6 3.5L480 197.7V448c0 35.3-28.7 64-64 64H224c-35.3 0-64-28.7-64-64V197.7l-51.5 42.9c-13.3 11.1-33.1 9.6-44.6-3.5l-56-64c-5.7-6.5-8.5-15-7.8-23.6s4.8-16.6 11.4-22.1L137.7 22.3C155 7.9 176.7 0 199.2 0h12.6z"
+            fill="currentColor"
+          />
+        </svg>
+      </span>
+      <span>
+        Men's clothing
+      </span>
+    </button>
+  </li>
+  <li>
+    <button
+      type="button"
+    >
+      <span>
+        <svg
+          aria-hidden="true"
+          class="svg-inline--fa fa-bag-shopping "
+          data-icon="bag-shopping"
+          data-prefix="fas"
+          focusable="false"
+          role="img"
+          viewBox="0 0 448 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M160 112c0-35.3 28.7-64 64-64s64 28.7 64 64v48H160V112zm-48 48H48c-26.5 0-48 21.5-48 48V416c0 53 43 96 96 96H352c53 0 96-43 96-96V208c0-26.5-21.5-48-48-48H336V112C336 50.1 285.9 0 224 0S112 50.1 112 112v48zm24 48a24 24 0 1 1 0 48 24 24 0 1 1 0-48zm152 24a24 24 0 1 1 48 0 24 24 0 1 1 -48 0z"
+            fill="currentColor"
+          />
+        </svg>
+      </span>
+      <span>
+        Women's clothing
+      </span>
+    </button>
+  </li>
+</ul>
+`;

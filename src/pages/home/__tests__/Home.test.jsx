@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { describe } from 'vitest';
-import Home from '../Home';
+import { Home } from 'pages';
 
 describe('Home', () => {
   it('should render the heading', () => {
