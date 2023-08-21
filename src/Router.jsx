@@ -20,8 +20,8 @@ function Router() {
         {
           path: 'products',
           element: <Products />,
-          children: [{ path: ':id', element: <Product /> }],
         },
+        { path: 'products/:id', element: <Product /> },
         { path: 'checkout', element: <Checkout /> },
         { path: '*', element: <NotFound /> },
       ],
