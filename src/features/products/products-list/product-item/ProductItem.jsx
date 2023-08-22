@@ -6,13 +6,9 @@ import {
   cardContent,
   countAndPrice,
   productTitle,
-  addToCartButton,
 } from './ProductItem.module.css';
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-import { ItemCount, ItemPrice } from 'components';
-
+import { ItemCount, ItemPrice, AddToCartButton } from 'components';
 function ProductItem({ product }) {
   const { id, title, price, image } = product;
   return (
@@ -31,10 +27,7 @@ function ProductItem({ product }) {
           <h3 className={productTitle}>
             <Link to={`/products/${id}`}>{title}</Link>
           </h3>
-          <button className={addToCartButton}>
-            <FontAwesomeIcon icon={faShoppingCart} />
-            <span>Add to cart</span>
-          </button>
+          <AddToCartButton />
         </div>
       </div>
     </li>
