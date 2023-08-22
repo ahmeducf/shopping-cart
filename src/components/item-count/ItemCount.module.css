@@ -16,9 +16,6 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition:
-    color 0.3s ease-in-out,
-    background-color 0.3s ease-in-out;
 }
 
 .countButton:first-of-type {
