@@ -5,17 +5,13 @@ import {
   cardImage,
   cardContent,
   countAndPrice,
-  countWrapper,
-  countButton,
-  countInput,
-  priceWrapper,
-  priceValue,
   productTitle,
   addToCartButton,
 } from './ProductItem.module.css';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { ItemCount, ItemPrice } from 'components';
 
 function ProductItem({ product }) {
   const { id, title, price, image } = product;
@@ -29,14 +25,8 @@ function ProductItem({ product }) {
         </Link>
         <div className={cardContent}>
           <div className={countAndPrice}>
-            <div className={countWrapper}>
-              <button className={countButton}>-</button>
-              <input className={countInput} type="number" value="1" />
-              <button className={countButton}>+</button>
-            </div>
-            <div className={priceWrapper}>
-              <span className={priceValue}>{`$${price}`}</span>
-            </div>
+            <ItemCount />
+            <ItemPrice price={price} />
           </div>
           <h3 className={productTitle}>
             <Link to={`/products/${id}`}>{title}</Link>
