@@ -74,7 +74,7 @@
 /* Variables */
 
 :root {
-  --main-bg-color: #f3f4f6;
+  --main-bg-color: rgb(15, 16, 17);
   --header-bg-color: rgb(15, 16, 17);
   --header-text-color: #fff;
   --products-sidebar-bg-color: rgb(15, 16, 17);
