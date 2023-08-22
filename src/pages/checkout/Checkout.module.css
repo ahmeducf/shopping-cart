@@ -1,0 +1,145 @@
+.checkout {
+  padding: 24px;
+  color: #000;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  position: relative;
+}
+
+.cartSection,
+.checkoutSection {
+  padding: 24px;
+  border-radius: 12px;
+  background-color: #fff;
+}
+
+.cartSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.checkoutSection {
+  min-width: 360px;
+  background-color: #fff;
+  position: sticky;
+  top: 24px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.itemsCount,
+.totalPrice {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.cartItems {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.checkoutWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  width: 100%;
+}
+
+.checkoutButton {
+  background-color: gold;
+  color: black;
+  border-radius: 5px;
+  padding: 4px 48px;
+  font-size: 0.9125rem;
+  font-weight: 600;
+  line-height: 2;
+  cursor: pointer;
+  max-width: 200px;
+  border: 2px solid transparent;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.checkoutButton:hover {
+  background-color: rgb(233, 200, 13);
+}
+
+.checkoutButton:focus-visible {
+  border: 2px solid #000 !important;
+}
+
+.imageWrapper {
+  background-image: url('src/assets/images/payment-methods.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 100%;
+  max-width: 312px;
+  height: 100px;
+  overflow: hidden;
+}
+
+@media (max-width: 1000px) {
+  .container {
+    flex-direction: column-reverse;
+    gap: 24px;
+    align-items: center;
+    max-width: 600px;
+  }
+
+  .checkoutSection {
+    position: static;
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .checkoutSection {
+    min-width: auto;
+  }
+
+  .title {
+    font-size: 1.3rem;
+  }
+
+  .itemsCount,
+  .totalPrice {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 350px) {
+  .title {
+    font-size: 1.2rem;
+  }
+
+  .itemsCount,
+  .totalPrice {
+    font-size: 0.9rem;
+  }
+}
