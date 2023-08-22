@@ -32,3 +32,21 @@
   font-weight: 500;
   line-height: 1.5;
 }
+
+@media (max-width: 500px) {
+  .ops {
+    font-size: 48px;
+  }
+
+  .heading {
+    font-size: 24px;
+  }
+
+  .description {
+    font-size: 14px;
+  }
+
+  .notFound a {
+    font-size: 16px;
+  }
+}
