@@ -51,7 +51,9 @@ describe('Product page', () => {
       </BrowserRouter>,
     );
 
-    expect(screen.getByRole('link', { name: /back/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole('link', { name: /back to products page/i }),
+    ).toBeInTheDocument();
   });
 
   it('should render the item count', () => {

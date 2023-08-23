@@ -22,10 +22,11 @@ function Product() {
         <Link
           to="/products"
           className={backToProductsLink}
-          title="Back"
-          aria-label="Back"
+          title="Back to products page"
+          aria-label="Back to products page"
         >
           <FontAwesomeIcon icon={faArrowLeftLong} />
+          <span>Back to products</span>
         </Link>
         <h1 className={title} aria-label="Product title">
           Product Title
