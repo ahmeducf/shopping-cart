@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { countWrapper, countButton, countInput } from './ItemCount.module.css';
+import PropTypes from 'prop-types';
 
-function ItemCount() {
-  const [count, setCount] = useState(1);
-
+function ItemCount({ count, setCount, isInCart }) {
   const isValueValid = (value) => {
     return value === '' || value >= 1;
   };
@@ -37,7 +36,7 @@ function ItemCount() {
       <button
         className={countButton}
         aria-label="Decrease count"
-        disabled={count === 1}
+        disabled={count === 1 || isInCart}
         onClick={handleDecrease}
       >
         -
@@ -50,16 +49,24 @@ function ItemCount() {
         role="spinbutton"
         onChange={handleInputChange}
         onBlur={handleInputBlur}
+        disabled={isInCart}
       />
       <button
         className={countButton}
         aria-label="Increase count"
         onClick={handleIncrease}
+        disabled={isInCart}
       >
         +
       </button>
     </div>
   );
 }
+
+ItemCount.propTypes = {
+  count: PropTypes.number.isRequired,
+  setCount: PropTypes.func.isRequired,
+  isInCart: PropTypes.bool.isRequired,
+};
 
 export default ItemCount;
