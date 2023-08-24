@@ -1,10 +1,10 @@
+import PropTypes from 'prop-types';
 import {
   faBagShopping,
   faLightbulb,
   faShirt,
   faStar,
 } from '@fortawesome/free-solid-svg-icons';
-import { faGem } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   categoryList,
@@ -15,25 +15,29 @@ import {
   active,
 } from './CategoryList.module.css';
 
-function CategoryList() {
+function CategoryList({ selectedCategory, setSelectedCategory }) {
   const categories = [
     { id: 1, name: 'All', icon: faStar },
-    { id: 3, name: 'Electronics', icon: faLightbulb },
-    { id: 2, name: 'Jewelry', icon: faGem },
-    { id: 4, name: "Men's clothing", icon: faShirt },
-    { id: 5, name: "Women's clothing", icon: faBagShopping },
+    { id: 2, name: 'Electronics', icon: faLightbulb },
+    { id: 3, name: "Men's clothing", icon: faShirt },
+    { id: 4, name: "Women's clothing", icon: faBagShopping },
   ];
 
-  const activeCategory = categories[0];
+  const handleClick = (e) => {
+    const { category } = e.currentTarget.dataset;
+    setSelectedCategory(category);
+  };
 
   return (
     <ul className={categoryList}>
       {categories.map((category) => (
         <li
+          data-category={category.name.toLowerCase()}
           key={category.id}
           className={`${listItem} ${
-            activeCategory.id === category.id ? active : ''
+            selectedCategory === category.name.toLowerCase() ? active : ''
           }`}
+          onClick={handleClick}
         >
           <button type="button" className={btn}>
             <span className={iconWrapper}>
@@ -46,5 +50,10 @@ function CategoryList() {
     </ul>
   );
 }
+
+CategoryList.propTypes = {
+  selectedCategory: PropTypes.string.isRequired,
+  setSelectedCategory: PropTypes.func.isRequired,
+};
 
 export default CategoryList;

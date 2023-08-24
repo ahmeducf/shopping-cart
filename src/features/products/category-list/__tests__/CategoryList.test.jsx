@@ -11,7 +11,7 @@ describe('CategoryList', () => {
       </BrowserRouter>,
     );
 
-    expect(screen.getAllByRole('listitem')).toHaveLength(5);
+    expect(screen.getAllByRole('listitem')).toHaveLength(4);
   });
 
   it('renders a list of categories with the correct names', () => {
@@ -23,7 +23,6 @@ describe('CategoryList', () => {
 
     expect(screen.getByText('All')).toBeInTheDocument();
     expect(screen.getByText('Electronics')).toBeInTheDocument();
-    expect(screen.getByText('Jewelry')).toBeInTheDocument();
     expect(screen.getByText("Men's clothing")).toBeInTheDocument();
     expect(screen.getByText("Women's clothing")).toBeInTheDocument();
   });
