@@ -8,8 +8,25 @@ import {
   productsSection,
   heading,
 } from './Products.module.css';
+import { useState } from 'react';
+import { useFetchProducts } from 'hooks';
+import { Error as ErrorPage } from 'pages';
 
 function Products() {
+  const { products: productsData, isLoading, error } = useFetchProducts();
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const pageHeading =
+    selectedCategory.slice(0, 1).toUpperCase() + selectedCategory.slice(1);
+
+  if (error) {
+    console.log(error);
+    return <ErrorPage error={error} />;
+  }
+
+  if (isLoading) {
+    return <div style={{ color: 'red' }}>Loading...</div>;
+  }
+
   return (
     <main className={products}>
       <h2 className={hidden}>Products</h2>
@@ -18,7 +35,10 @@ function Products() {
           <h3 className={hidden}>Filters</h3>
           <div aria-label="Categories" role="list">
             <h4 className={filterHeading}>Categories</h4>
-            <CategoryList />
+            <CategoryList
+              selectedCategory={selectedCategory}
+              setSelectedCategory={setSelectedCategory}
+            />
           </div>
         </section>
         <section
@@ -26,8 +46,11 @@ function Products() {
           aria-label="Products section"
           role="list"
         >
-          <h3 className={heading}>All</h3>
-          <ProductsList />
+          <h3 className={heading}>{pageHeading}</h3>
+          <ProductsList
+            products={productsData}
+            selectedCategory={selectedCategory}
+          />
         </section>
       </div>
     </main>
