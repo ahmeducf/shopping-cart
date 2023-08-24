@@ -1,13 +1,13 @@
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { describe, expect, it } from 'vitest';
-import NotFound from '../NotFound';
+import Error from '../Error';
 
-describe('NotFound', () => {
-  it('should render the NotFound component', () => {
+describe('Error', () => {
+  it('should render the Error component', () => {
     render(
       <BrowserRouter>
-        <NotFound />
+        <Error />
       </BrowserRouter>,
     );
 
@@ -17,7 +17,7 @@ describe('NotFound', () => {
   it('should render the heading', () => {
     render(
       <BrowserRouter>
-        <NotFound />
+        <Error />
       </BrowserRouter>,
     );
 
@@ -27,7 +27,7 @@ describe('NotFound', () => {
   it('should render the description', () => {
     render(
       <BrowserRouter>
-        <NotFound />
+        <Error />
       </BrowserRouter>,
     );
 
@@ -39,7 +39,7 @@ describe('NotFound', () => {
   it('should render the link', () => {
     render(
       <BrowserRouter>
-        <NotFound />
+        <Error />
       </BrowserRouter>,
     );
 

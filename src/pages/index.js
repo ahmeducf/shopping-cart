@@ -4,4 +4,4 @@ export { default as About } from './about/About';
 export { default as Products } from './products/Products';
 export { default as Product } from './product/Product';
 export { default as Checkout } from './checkout/Checkout';
-export { default as NotFound } from './not-found/NotFound';
+export { default as Error } from './error/Error';
