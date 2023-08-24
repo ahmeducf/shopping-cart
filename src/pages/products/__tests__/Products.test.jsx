@@ -4,44 +4,52 @@ import { BrowserRouter } from 'react-router-dom';
 import { describe, expect, it, vi } from 'vitest';
 import ProductsProvider from 'contexts/ProductsContext';
 import userEvent from '@testing-library/user-event';
+import CartProvider from 'contexts/CartContext';
 
-vi.mock('hooks', () => ({
-  useFetchProducts: vi.fn(() => ({
-    products: [
-      {
-        id: 1,
-        name: 'Product 1',
-        price: 100,
-        category: 'electronics',
-        image: 'image 1',
-      },
-      {
-        id: 2,
-        name: 'Product 2',
-        price: 200,
-        category: 'electronics',
-        image: 'image 2',
-      },
-      {
-        id: 3,
-        name: 'Product 3',
-        price: 300,
-        category: 'jewelery',
-        image: 'image 3',
-      },
-    ],
-    isLoading: false,
-    error: null,
-  })),
-}));
+vi.mock('hooks', async () => {
+  const actual = await vi.importActual('hooks');
+
+  return {
+    ...actual,
+    useFetchProducts: vi.fn(() => ({
+      products: [
+        {
+          id: 1,
+          name: 'Product 1',
+          price: 100,
+          category: 'electronics',
+          image: 'image 1',
+        },
+        {
+          id: 2,
+          name: 'Product 2',
+          price: 200,
+          category: 'electronics',
+          image: 'image 2',
+        },
+        {
+          id: 3,
+          name: 'Product 3',
+          price: 300,
+          category: 'jewelery',
+          image: 'image 3',
+        },
+      ],
+      isLoading: false,
+      error: null,
+    })),
+  };
+});
 
 describe('Products', () => {
   it('renders a heading "Products"', () => {
     render(
       <ProductsProvider>
-        <BrowserRouter>
-          <Products />
-        </BrowserRouter>
+        <CartProvider>
+          <BrowserRouter>
+            <Products />
+          </BrowserRouter>
+        </CartProvider>
       </ProductsProvider>,
     );
 
@@ -53,9 +61,11 @@ describe('Products', () => {
   it('renders a sidebar section with a heading "Filters"', () => {
     render(
       <ProductsProvider>
-        <BrowserRouter>
-          <Products />
-        </BrowserRouter>
+        <CartProvider>
+          <BrowserRouter>
+            <Products />
+          </BrowserRouter>
+        </CartProvider>
       </ProductsProvider>,
     );
 
@@ -71,9 +81,11 @@ describe('Products', () => {
   it('renders a sidebar section with a heading "Categories"', () => {
     render(
       <ProductsProvider>
-        <BrowserRouter>
-          <Products />
-        </BrowserRouter>
+        <CartProvider>
+          <BrowserRouter>
+            <Products />
+          </BrowserRouter>
+        </CartProvider>
       </ProductsProvider>,
     );
 
@@ -85,9 +97,11 @@ describe('Products', () => {
   it('renders a sidebar section with a list of categories', () => {
     render(
       <ProductsProvider>
-        <BrowserRouter>
-          <Products />
-        </BrowserRouter>
+        <CartProvider>
+          <BrowserRouter>
+            <Products />
+          </BrowserRouter>
+        </CartProvider>
       </ProductsProvider>,
     );
 
@@ -99,9 +113,11 @@ describe('Products', () => {
   it('renders a grid of products', () => {
     render(
       <ProductsProvider>
-        <BrowserRouter>
-          <Products />
-        </BrowserRouter>
+        <CartProvider>
+          <BrowserRouter>
+            <Products />
+          </BrowserRouter>
+        </CartProvider>
       </ProductsProvider>,
     );
 
@@ -113,9 +129,11 @@ describe('Products', () => {
   it('renders a grid of 2 products when the category "Electronics" is selected', async () => {
     render(
       <ProductsProvider>
-        <BrowserRouter>
-          <Products />
-        </BrowserRouter>
+        <CartProvider>
+          <BrowserRouter>
+            <Products />
+          </BrowserRouter>
+        </CartProvider>
       </ProductsProvider>,
     );
 
@@ -129,9 +147,11 @@ describe('Products', () => {
   it('renders a default heading "All"', () => {
     render(
       <ProductsProvider>
-        <BrowserRouter>
-          <Products />
-        </BrowserRouter>
+        <CartProvider>
+          <BrowserRouter>
+            <Products />
+          </BrowserRouter>
+        </CartProvider>
       </ProductsProvider>,
     );
 
@@ -141,9 +161,11 @@ describe('Products', () => {
   it('renders a heading "Electronics" when the category is selected', async () => {
     render(
       <ProductsProvider>
-        <BrowserRouter>
-          <Products />
-        </BrowserRouter>
+        <CartProvider>
+          <BrowserRouter>
+            <Products />
+          </BrowserRouter>
+        </CartProvider>
       </ProductsProvider>,
     );
 
@@ -154,5 +176,24 @@ describe('Products', () => {
     expect(
       screen.getByRole('heading', { name: /Electronics/ }),
     ).toBeInTheDocument();
+  });
+
+  it('should render a "Added to cart" text when the add to cart button is clicked', async () => {
+    render(
+      <ProductsProvider>
+        <CartProvider>
+          <BrowserRouter>
+            <Products />
+          </BrowserRouter>
+        </CartProvider>
+      </ProductsProvider>,
+    );
+    const user = userEvent.setup();
+
+    await user.click(
+      screen.getAllByRole('button', { name: /add to cart/i })[0],
+    );
+
+    expect(screen.getByText(/added to cart/i)).toBeInTheDocument();
   });
 });
