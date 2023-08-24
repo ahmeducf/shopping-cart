@@ -1,8 +1,10 @@
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { beforeEach, describe, expect } from 'vitest';
-import ProductItem from '../ProductItem';
+import ProductItem from '../product-item/ProductItem';
 import userEvent from '@testing-library/user-event';
+import ProductsProvider from 'contexts/ProductsContext';
+import CartProvider from 'contexts/CartContext';
 
 describe('ProductItem', () => {
   let product;
@@ -19,7 +21,11 @@ describe('ProductItem', () => {
   it('should render a product item', () => {
     render(
       <BrowserRouter>
-        <ProductItem product={product} />
+        <ProductsProvider>
+          <CartProvider>
+            <ProductItem product={product} />
+          </CartProvider>
+        </ProductsProvider>
       </BrowserRouter>,
     );
 
@@ -29,7 +35,11 @@ describe('ProductItem', () => {
   it('should render a product item with correct title', () => {
     render(
       <BrowserRouter>
-        <ProductItem product={product} />
+        <ProductsProvider>
+          <CartProvider>
+            <ProductItem product={product} />
+          </CartProvider>
+        </ProductsProvider>
       </BrowserRouter>,
     );
 
@@ -39,7 +49,11 @@ describe('ProductItem', () => {
   it('should render a product item with correct price', () => {
     render(
       <BrowserRouter>
-        <ProductItem product={product} />
+        <ProductsProvider>
+          <CartProvider>
+            <ProductItem product={product} />
+          </CartProvider>
+        </ProductsProvider>
       </BrowserRouter>,
     );
 
@@ -49,7 +63,11 @@ describe('ProductItem', () => {
   it('should render a product item with correct image', () => {
     render(
       <BrowserRouter>
-        <ProductItem product={product} />
+        <ProductsProvider>
+          <CartProvider>
+            <ProductItem product={product} />
+          </CartProvider>
+        </ProductsProvider>
       </BrowserRouter>,
     );
 
@@ -59,7 +77,11 @@ describe('ProductItem', () => {
   it('should render a product item with correct link', () => {
     render(
       <BrowserRouter>
-        <ProductItem product={product} />
+        <ProductsProvider>
+          <CartProvider>
+            <ProductItem product={product} />
+          </CartProvider>
+        </ProductsProvider>
       </BrowserRouter>,
     );
 
@@ -76,7 +98,11 @@ describe('ProductItem', () => {
   it('should render a product item with correct add to cart button', () => {
     render(
       <BrowserRouter>
-        <ProductItem product={product} />
+        <ProductsProvider>
+          <CartProvider>
+            <ProductItem product={product} />
+          </CartProvider>
+        </ProductsProvider>
       </BrowserRouter>,
     );
 
@@ -86,7 +112,11 @@ describe('ProductItem', () => {
   it('should render a product page when click on product item image', async () => {
     render(
       <BrowserRouter>
-        <ProductItem product={product} />
+        <ProductsProvider>
+          <CartProvider>
+            <ProductItem product={product} />
+          </CartProvider>
+        </ProductsProvider>
       </BrowserRouter>,
     );
 
@@ -100,7 +130,11 @@ describe('ProductItem', () => {
   it('should render a product page when click on product item title', async () => {
     render(
       <BrowserRouter>
-        <ProductItem product={product} />
+        <ProductsProvider>
+          <CartProvider>
+            <ProductItem product={product} />
+          </CartProvider>
+        </ProductsProvider>
       </BrowserRouter>,
     );
 

@@ -8,11 +8,22 @@ import {
   productTitle,
 } from './ProductItem.module.css';
 import { Link } from 'react-router-dom';
-import { ItemCount, ItemPrice, AddToCartButton } from 'components';
+import { ItemCount, ItemPrice, AddToCartButton, AddedToCart } from 'components';
+import { useState } from 'react';
+import { useCart } from 'hooks';
 function ProductItem({ product }) {
   const { id, title, price, image } = product;
+  const [count, setCount] = useState(1);
+  const { cart } = useCart();
+  const isInCart = cart.some((item) => item.id === id);
+
   return (
-    <li className={productItem} aria-label={title}>
+    <li
+      className={productItem}
+      aria-label={title}
+      title={title}
+      data-testid="product-item"
+    >
       <div className={card}>
         <Link to={`/products/${id}`}>
           <div className={cardImage}>
@@ -21,13 +32,21 @@ function ProductItem({ product }) {
         </Link>
         <div className={cardContent}>
           <div className={countAndPrice}>
-            <ItemCount />
+            <ItemCount
+              count={Number(count)}
+              setCount={setCount}
+              isInCart={isInCart}
+            />
             <ItemPrice price={price} />
           </div>
           <h3 className={productTitle}>
             <Link to={`/products/${id}`}>{title}</Link>
           </h3>
-          <AddToCartButton />
+          {!isInCart ? (
+            <AddToCartButton id={id} quantity={count} />
+          ) : (
+            <AddedToCart />
+          )}
         </div>
       </div>
     </li>
