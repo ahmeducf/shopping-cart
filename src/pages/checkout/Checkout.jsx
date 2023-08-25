@@ -12,8 +12,10 @@ import {
   checkoutWrapper,
   checkoutButton,
   imageWrapper,
+  emptyCart,
 } from './Checkout.module.css';
 import { useCart, useProducts } from 'hooks';
+import { ShopNowButton } from 'components';
 
 function Checkout() {
   const { cart } = useCart();
@@ -43,6 +45,12 @@ function Checkout() {
               return <CartItem key={product.id} product={product} />;
             })}
           </ul>
+          {cart.length === 0 && (
+            <div className={emptyCart}>
+              <span>Your cart is empty!</span>
+              <ShopNowButton />
+            </div>
+          )}
         </section>
         <section className={checkoutSection} aria-label="Checkout items">
           <div className={heading}>
