@@ -1,13 +1,39 @@
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import Product from '../Product';
+import ProductsProvider from 'contexts/ProductsContext';
+import CartProvider from 'contexts/CartContext';
+
+vi.mock('hooks', async () => {
+  const actual = await vi.importActual('hooks');
+
+  return {
+    ...actual,
+    useFetchProductById: vi.fn(() => ({
+      product: {
+        id: '1',
+        title: 'Product title',
+        price: 10.99,
+        category: 'Electronics',
+        description: 'Product description',
+        image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
+      },
+      isLoading: false,
+      error: null,
+    })),
+  };
+});
 
 describe('Product page', () => {
   it('should render the product title heading', () => {
     render(
       <BrowserRouter>
-        <Product />
+        <ProductsProvider>
+          <CartProvider>
+            <Product />
+          </CartProvider>
+        </ProductsProvider>
       </BrowserRouter>,
     );
 
@@ -19,7 +45,11 @@ describe('Product page', () => {
   it('should render the product description', () => {
     render(
       <BrowserRouter>
-        <Product />
+        <ProductsProvider>
+          <CartProvider>
+            <Product />
+          </CartProvider>
+        </ProductsProvider>
       </BrowserRouter>,
     );
 
@@ -34,7 +64,11 @@ describe('Product page', () => {
   it('should render the product image', () => {
     render(
       <BrowserRouter>
-        <Product />
+        <ProductsProvider>
+          <CartProvider>
+            <Product />
+          </CartProvider>
+        </ProductsProvider>
       </BrowserRouter>,
     );
 
@@ -47,7 +81,11 @@ describe('Product page', () => {
   it('should render a link to back to the products page', () => {
     render(
       <BrowserRouter>
-        <Product />
+        <ProductsProvider>
+          <CartProvider>
+            <Product />
+          </CartProvider>
+        </ProductsProvider>
       </BrowserRouter>,
     );
 
@@ -59,7 +97,11 @@ describe('Product page', () => {
   it('should render the item count', () => {
     render(
       <BrowserRouter>
-        <Product />
+        <ProductsProvider>
+          <CartProvider>
+            <Product />
+          </CartProvider>
+        </ProductsProvider>
       </BrowserRouter>,
     );
 
@@ -80,7 +122,11 @@ describe('Product page', () => {
   it('should render the add to cart button', () => {
     render(
       <BrowserRouter>
-        <Product />
+        <ProductsProvider>
+          <CartProvider>
+            <Product />
+          </CartProvider>
+        </ProductsProvider>
       </BrowserRouter>,
     );
 

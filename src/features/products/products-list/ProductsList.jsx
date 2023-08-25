@@ -1,13 +1,12 @@
-import { useProducts } from 'hooks';
 import { productsList } from './ProductsList.module.css';
 import { ProductItem } from './product-item';
 import PropTypes from 'prop-types';
 
 function ProductsList({ products, selectedCategory }) {
-  let filteredProducts = products;
+  let filteredProducts = [...products].map(([, product]) => product);
 
   if (selectedCategory !== 'all') {
-    filteredProducts = products.filter(
+    filteredProducts = filteredProducts.filter(
       (product) => product.category === selectedCategory,
     );
   }
@@ -22,16 +21,7 @@ function ProductsList({ products, selectedCategory }) {
 }
 
 ProductsList.propTypes = {
-  products: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired,
-      price: PropTypes.number.isRequired,
-      description: PropTypes.string.isRequired,
-      category: PropTypes.string.isRequired,
-      image: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
+  products: PropTypes.instanceOf(Map).isRequired,
   selectedCategory: PropTypes.string.isRequired,
 };
 

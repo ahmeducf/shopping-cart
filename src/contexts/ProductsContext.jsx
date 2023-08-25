@@ -7,7 +7,7 @@ const ProductsDispatchContext = createContext(null);
 
 function ProductsProvider({ children }) {
   const [state, dispatch] = useReducer(productsReducer, {
-    products: [],
+    products: new Map(),
     isLoading: true,
     error: null,
   });

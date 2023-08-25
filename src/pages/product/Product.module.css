@@ -1,4 +1,4 @@
-.product {
+.productPage {
   padding: 24px;
   background-color: rgb(15, 16, 17);
   flex: 1;
@@ -40,7 +40,7 @@
 }
 
 .title {
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 800;
   color: #fff;
 }
@@ -56,6 +56,7 @@
   justify-content: center;
   align-items: center;
   flex: 1;
+  height: fit-content;
 }
 
 .left img {
@@ -108,10 +109,12 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
+  align-items: center;
 }
 
-.addToCartWrapper button {
+.addToCartWrapper > button {
   max-width: none !important;
+  width: 100%;
 }
 
 .countAndPrice {

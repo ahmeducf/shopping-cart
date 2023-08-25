@@ -7,7 +7,7 @@ describe('ProductsList', () => {
   it('should render a list of products', () => {
     render(
       <BrowserRouter>
-        <ProductsList products={[]} selectedCategory={null} />
+        <ProductsList products={new Map()} selectedCategory={null} />
       </BrowserRouter>,
     );
 

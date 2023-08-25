@@ -12,29 +12,38 @@ vi.mock('hooks', async () => {
   return {
     ...actual,
     useFetchProducts: vi.fn(() => ({
-      products: [
-        {
-          id: 1,
-          name: 'Product 1',
-          price: 100,
-          category: 'electronics',
-          image: 'image 1',
-        },
-        {
-          id: 2,
-          name: 'Product 2',
-          price: 200,
-          category: 'electronics',
-          image: 'image 2',
-        },
-        {
-          id: 3,
-          name: 'Product 3',
-          price: 300,
-          category: 'jewelery',
-          image: 'image 3',
-        },
-      ],
+      products: new Map([
+        [
+          '1',
+          {
+            id: 1,
+            name: 'Product 1',
+            price: 100,
+            category: 'electronics',
+            image: 'image 1',
+          },
+        ],
+        [
+          '2',
+          {
+            id: 2,
+            name: 'Product 2',
+            price: 200,
+            category: 'electronics',
+            image: 'image 2',
+          },
+        ],
+        [
+          '3',
+          {
+            id: 3,
+            title: 'Green Shirt',
+            price: 10.99,
+            category: 'product 3',
+            image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
+          },
+        ],
+      ]),
       isLoading: false,
       error: null,
     })),
@@ -188,12 +197,11 @@ describe('Products', () => {
         </CartProvider>
       </ProductsProvider>,
     );
+
     const user = userEvent.setup();
 
-    await user.click(
-      screen.getAllByRole('button', { name: /add to cart/i })[0],
-    );
+    await user.click(screen.getAllByRole('button', { name: /Add to cart/ })[0]);
 
-    expect(screen.getByText(/added to cart/i)).toBeInTheDocument();
+    expect(screen.getByText(/Added to cart/i)).toBeInTheDocument();
   });
 });

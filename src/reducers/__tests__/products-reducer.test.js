@@ -6,7 +6,7 @@ describe('products reducer', () => {
 
   beforeEach(() => {
     initialState = {
-      products: [],
+      products: new Map(),
       isLoading: true,
       error: null,
     };
@@ -25,7 +25,7 @@ describe('products reducer', () => {
     };
 
     const expectedState = {
-      products: [{ id: 1, name: 'Product 1' }],
+      products: new Map([[1, { id: 1, name: 'Product 1' }]]),
       isLoading: false,
       error: null,
     };
@@ -40,7 +40,7 @@ describe('products reducer', () => {
     };
 
     const expectedState = {
-      products: [],
+      products: new Map(),
       isLoading: false,
       error: 'Error fetching products',
     };
@@ -54,7 +54,7 @@ describe('products reducer', () => {
     };
 
     const expectedState = {
-      products: [],
+      products: new Map(),
       isLoading: false,
       error: null,
     };

@@ -19,7 +19,6 @@ function Products() {
     selectedCategory.slice(0, 1).toUpperCase() + selectedCategory.slice(1);
 
   if (error) {
-    console.log(error);
     return <ErrorPage error={error} />;
   }
 
