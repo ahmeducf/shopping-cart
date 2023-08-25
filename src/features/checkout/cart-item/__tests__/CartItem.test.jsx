@@ -1,14 +1,47 @@
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import CartItem from '../CartItem';
+import ProductsProvider from 'contexts/ProductsContext';
+import CartProvider from 'contexts/CartContext';
+
+vi.mock('hooks', async () => {
+  const actual = await vi.importActual('hooks');
+
+  return {
+    ...actual,
+    useProducts: vi.fn(() => ({
+      products: {
+        get: vi.fn(() => ({
+          id: 1,
+          title: 'Product title',
+          description: 'Product description',
+          image: 'https://via.placeholder.com/150',
+          quantity: 1,
+        })),
+      },
+    })),
+  };
+});
+
+let product = {
+  id: 1,
+  title: 'Test product',
+  image: 'https://via.placeholder.com/150',
+  price: 100,
+  quantity: 1,
+};
 
 describe('CartItem component', () => {
   it('should render the cart item', () => {
     render(
-      <BrowserRouter>
-        <CartItem />
-      </BrowserRouter>,
+      <ProductsProvider>
+        <CartProvider>
+          <BrowserRouter>
+            <CartItem product={product} />
+          </BrowserRouter>
+        </CartProvider>
+      </ProductsProvider>,
     );
 
     expect(screen.getByRole('listitem')).toBeInTheDocument();
@@ -16,9 +49,13 @@ describe('CartItem component', () => {
 
   it('should render the product image', () => {
     render(
-      <BrowserRouter>
-        <CartItem />
-      </BrowserRouter>,
+      <ProductsProvider>
+        <CartProvider>
+          <BrowserRouter>
+            <CartItem product={product} />
+          </BrowserRouter>
+        </CartProvider>
+      </ProductsProvider>,
     );
 
     expect(screen.getByRole('img')).toBeInTheDocument();
@@ -26,9 +63,13 @@ describe('CartItem component', () => {
 
   it('should render two links', () => {
     render(
-      <BrowserRouter>
-        <CartItem />
-      </BrowserRouter>,
+      <ProductsProvider>
+        <CartProvider>
+          <BrowserRouter>
+            <CartItem product={product} />
+          </BrowserRouter>
+        </CartProvider>
+      </ProductsProvider>,
     );
 
     expect(screen.getAllByRole('link')).toHaveLength(2);
@@ -36,9 +77,13 @@ describe('CartItem component', () => {
 
   it('should render the product title', () => {
     render(
-      <BrowserRouter>
-        <CartItem />
-      </BrowserRouter>,
+      <ProductsProvider>
+        <CartProvider>
+          <BrowserRouter>
+            <CartItem product={product} />
+          </BrowserRouter>
+        </CartProvider>
+      </ProductsProvider>,
     );
 
     expect(
@@ -50,9 +95,13 @@ describe('CartItem component', () => {
 
   it('should render the product price', () => {
     render(
-      <BrowserRouter>
-        <CartItem />
-      </BrowserRouter>,
+      <ProductsProvider>
+        <CartProvider>
+          <BrowserRouter>
+            <CartItem product={product} />
+          </BrowserRouter>
+        </CartProvider>
+      </ProductsProvider>,
     );
 
     expect(screen.getByText('$100')).toBeInTheDocument();
@@ -60,9 +109,13 @@ describe('CartItem component', () => {
 
   it('should render the delete button', () => {
     render(
-      <BrowserRouter>
-        <CartItem />
-      </BrowserRouter>,
+      <ProductsProvider>
+        <CartProvider>
+          <BrowserRouter>
+            <CartItem product={product} />
+          </BrowserRouter>
+        </CartProvider>
+      </ProductsProvider>,
     );
 
     expect(screen.getByRole('button', { name: /delete/i })).toBeInTheDocument();
@@ -70,9 +123,13 @@ describe('CartItem component', () => {
 
   it('should render the item count', () => {
     render(
-      <BrowserRouter>
-        <CartItem />
-      </BrowserRouter>,
+      <ProductsProvider>
+        <CartProvider>
+          <BrowserRouter>
+            <CartItem product={product} />
+          </BrowserRouter>
+        </CartProvider>
+      </ProductsProvider>,
     );
 
     expect(screen.getByRole('spinbutton')).toBeInTheDocument();

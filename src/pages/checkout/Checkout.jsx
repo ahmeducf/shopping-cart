@@ -13,27 +13,41 @@ import {
   checkoutButton,
   imageWrapper,
 } from './Checkout.module.css';
+import { useCart, useProducts } from 'hooks';
 
 function Checkout() {
+  const { cart } = useCart();
+  const { products } = useProducts();
+
+  const cartItemsCount = cart.reduce((acc, item) => {
+    const product = products.get(item.id);
+    return acc + product.quantity;
+  }, 0);
+
+  const cartTotalPrice = cart.reduce((acc, item) => {
+    const product = products.get(item.id);
+    return acc + product.price * product.quantity;
+  }, 0);
+
   return (
     <main className={checkout}>
       <div className={container}>
         <section className={cartSection} aria-label="Shopping cart items">
           <div className={heading}>
             <h2 className={title}>Your shopping cart</h2>
-            <p className={itemsCount}>3 items</p>
+            <p className={itemsCount}>{cartItemsCount} items</p>
           </div>
           <ul className={cartItems} aria-label="Cart items">
-            <CartItem />
-            <CartItem />
-            <CartItem />
-            <CartItem />
+            {cart.map((item) => {
+              const product = products.get(item.id);
+              return <CartItem key={product.id} product={product} />;
+            })}
           </ul>
         </section>
         <section className={checkoutSection} aria-label="Checkout items">
           <div className={heading}>
             <h2 className={title}>Total</h2>
-            <p className={totalPrice}>$300</p>
+            <p className={totalPrice}>${cartTotalPrice}</p>
           </div>
           <div className={checkoutWrapper}>
             <button type="button" className={checkoutButton}>

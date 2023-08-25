@@ -1,16 +1,22 @@
 function cartReducer(state, action) {
   switch (action.type) {
     case 'ADD_TO_CART_REQUEST': {
-      const { id, quantity } = action.payload;
+      const { id } = action.payload;
       return {
         ...state,
         cart: [
           ...state.cart,
           {
             id,
-            quantity,
           },
         ],
+      };
+    }
+    case 'REMOVE_ITEM': {
+      const { id } = action.payload;
+      return {
+        ...state,
+        cart: state.cart.filter((item) => item.id !== id),
       };
     }
     default: {
