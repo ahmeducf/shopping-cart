@@ -1,11 +1,5 @@
-import { Link } from 'react-router-dom';
-import {
-  container,
-  textContainer,
-  heading,
-  text,
-  shopNowBtn,
-} from './Home.module.css';
+import { container, textContainer, heading, text } from './Home.module.css';
+import { ShopNowButton } from 'components';
 
 function Home() {
   return (
@@ -17,9 +11,7 @@ function Home() {
           and exquisite jewelry for both men and women. Step into a world of
           endless possibilities and let us redefine your shopping journey.
         </p>
-        <Link className={shopNowBtn} to="/products">
-          Shop Now
-        </Link>
+        <ShopNowButton />
       </div>
     </main>
   );
