@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import {
-  product,
+  productPage,
   wrapper,
   backToProductsLink,
   title,
@@ -13,11 +13,28 @@ import {
 } from './Product.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeftLong } from '@fortawesome/free-solid-svg-icons';
-import { AddToCartButton, ItemCount, ItemPrice } from 'components';
+import { AddToCartButton, AddedToCart, ItemCount, ItemPrice } from 'components';
+import { useCart, useFetchProductById } from 'hooks';
+import { Error } from 'pages';
+import { useState } from 'react';
 
 function Product() {
+  const { id } = useParams();
+  const { product, error, isLoading } = useFetchProductById(id);
+  const { cart } = useCart();
+  const isInCart = cart.some((item) => item.id === Number(id));
+  const [count, setCount] = useState(1);
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <Error />;
+  }
+
   return (
-    <main className={product}>
+    <main className={productPage}>
       <div className={wrapper}>
         <Link
           to="/products"
@@ -29,34 +46,32 @@ function Product() {
           <span>Back to products</span>
         </Link>
         <h1 className={title} aria-label="Product title">
-          Product Title
+          {product.title}
         </h1>
       </div>
       <div className={container}>
         <section className={left} aria-label="Product image">
-          {/* TODO: Replace with real image */}
-          <img
-            src="https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg"
-            alt="Product"
-          />
+          <img src={product.image} alt={product.title} />
         </section>
         <div className={right}>
           <section className={description} aria-label="Product description">
             <h2>Description</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-              voluptatum, voluptate, quibusdam, quia voluptas quod dolorum
-              voluptatem quos quae quidem repellendus? Quisquam, voluptatum
-              voluptate, quibusdam, quia voluptas quod dolorum voluptatem quos
-              quae quidem repellendus?
-            </p>
+            <p>{product.description}</p>
           </section>
           <section className={addToCartWrapper}>
             <div className={countAndPrice}>
-              <ItemCount />
+              <ItemCount
+                count={count}
+                setCount={setCount}
+                isInCart={isInCart}
+              />
               <ItemPrice price={100} />
             </div>
-            <AddToCartButton />
+            {isInCart ? (
+              <AddedToCart />
+            ) : (
+              <AddToCartButton id={product.id} quantity={count} />
+            )}
           </section>
         </div>
       </div>
