@@ -6,6 +6,8 @@ function useFetchProducts() {
   const dispatch = useProductsDispatch();
 
   useEffect(() => {
+    let isMounted = true;
+
     async function fetchProducts() {
       try {
         const response = await fetch('https://fakestoreapi.com/products', {
@@ -23,7 +25,14 @@ function useFetchProducts() {
         dispatch({ type: 'FETCHED_PRODUCTS_COMPLETE' });
       }
     }
-    fetchProducts();
+
+    if (isMounted) {
+      fetchProducts();
+    }
+
+    return () => {
+      isMounted = false;
+    };
   }, [dispatch]);
 
   return { products, isLoading, error };
