@@ -43,7 +43,7 @@ function ProductItem({ product }) {
             <Link to={`/products/${id}`}>{title}</Link>
           </h3>
           {!isInCart ? (
-            <AddToCartButton id={id} quantity={count} />
+            <AddToCartButton id={Number(id)} quantity={count} />
           ) : (
             <AddedToCart />
           )}
