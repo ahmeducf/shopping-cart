@@ -18,8 +18,8 @@ function About() {
           exist. You can not buy anything here. This is just a demo application.
         </p>
         <p className={content}>
-          This application is built using React, React Router. It uses the Fake
-          Store API to fetch products and categories.
+          This application is built using React, React Router, Context API, and
+          reducers. It uses the Fake Store API to fetch products and categories.
         </p>
       </div>
 
@@ -31,7 +31,7 @@ function About() {
 
         <a href="https://fakestoreapi.com/" className={wrapper}>
           <FontAwesomeIcon icon={faStore} />
-          <span>Fake Store API</span>
+          <span>FakeStore API</span>
         </a>
       </div>
     </main>
