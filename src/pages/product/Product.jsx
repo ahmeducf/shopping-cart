@@ -16,14 +16,13 @@ import { faArrowLeftLong } from '@fortawesome/free-solid-svg-icons';
 import { AddToCartButton, AddedToCart, ItemCount, ItemPrice } from 'components';
 import { useCart, useFetchProductById } from 'hooks';
 import { Error } from 'pages';
-import { useState } from 'react';
 
 function Product() {
   const { id } = useParams();
-  const { product, error, isLoading } = useFetchProductById(id);
+  const { products, error, isLoading } = useFetchProductById(id);
+  const product = products.get(Number(id));
   const { cart } = useCart();
   const isInCart = cart.some((item) => item.id === Number(id));
-  const [count, setCount] = useState(1);
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -60,18 +59,10 @@ function Product() {
           </section>
           <section className={addToCartWrapper}>
             <div className={countAndPrice}>
-              <ItemCount
-                count={count}
-                setCount={setCount}
-                isInCart={isInCart}
-              />
+              <ItemCount id={Number(id)} />
               <ItemPrice price={100} />
             </div>
-            {isInCart ? (
-              <AddedToCart />
-            ) : (
-              <AddToCartButton id={product.id} quantity={count} />
-            )}
+            {isInCart ? <AddedToCart /> : <AddToCartButton id={product.id} />}
           </section>
         </div>
       </div>

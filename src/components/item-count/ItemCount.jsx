@@ -1,8 +1,12 @@
-import { useState } from 'react';
+import { useProducts, useProductsDispatch } from 'hooks';
 import { countWrapper, countButton, countInput } from './ItemCount.module.css';
 import PropTypes from 'prop-types';
 
-function ItemCount({ count, setCount, isInCart }) {
+function ItemCount({ id }) {
+  const { products } = useProducts();
+  const { quantity } = products.get(id);
+  const dispatch = useProductsDispatch();
+
   const isValueValid = (value) => {
     return value === '' || value >= 1;
   };
@@ -10,24 +14,36 @@ function ItemCount({ count, setCount, isInCart }) {
   const handleInputChange = (e) => {
     const value = e.target.value;
     if (isValueValid(value)) {
-      setCount(value);
+      dispatch({
+        type: 'UPDATE_PRODUCT_QUANTITY',
+        id: id,
+        quantity: Number(value),
+      });
     }
   };
 
   const handleDecrease = () => {
-    if (count > 1) {
-      setCount(count - 1);
+    if (quantity > 1) {
+      dispatch({
+        type: 'UPDATE_PRODUCT_QUANTITY',
+        id: id,
+        quantity: quantity - 1,
+      });
     }
   };
 
   const handleIncrease = () => {
-    setCount(count + 1);
+    dispatch({
+      type: 'UPDATE_PRODUCT_QUANTITY',
+      id: id,
+      quantity: quantity + 1,
+    });
   };
 
   const handleInputBlur = (e) => {
     const value = e.target.value;
     if (value === '') {
-      setCount(1);
+      dispatch({ type: 'UPDATE_PRODUCT_QUANTITY', id: id, quantity: 1 });
     }
   };
 
@@ -36,7 +52,7 @@ function ItemCount({ count, setCount, isInCart }) {
       <button
         className={countButton}
         aria-label="Decrease count"
-        disabled={count === 1 || isInCart}
+        disabled={quantity === 1}
         onClick={handleDecrease}
       >
         -
@@ -44,18 +60,16 @@ function ItemCount({ count, setCount, isInCart }) {
       <input
         className={countInput}
         type="number"
-        value={count}
+        value={quantity}
         aria-label="Count"
         role="spinbutton"
         onChange={handleInputChange}
         onBlur={handleInputBlur}
-        disabled={isInCart}
       />
       <button
         className={countButton}
         aria-label="Increase count"
         onClick={handleIncrease}
-        disabled={isInCart}
       >
         +
       </button>
@@ -64,9 +78,7 @@ function ItemCount({ count, setCount, isInCart }) {
 }
 
 ItemCount.propTypes = {
-  count: PropTypes.number.isRequired,
-  setCount: PropTypes.func.isRequired,
-  isInCart: PropTypes.bool.isRequired,
+  id: PropTypes.number.isRequired,
 };
 
 export default ItemCount;

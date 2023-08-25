@@ -25,7 +25,7 @@ describe('products reducer', () => {
     };
 
     const expectedState = {
-      products: new Map([[1, { id: 1, name: 'Product 1' }]]),
+      products: new Map([[1, { id: 1, name: 'Product 1', quantity: 1 }]]),
       isLoading: false,
       error: null,
     };

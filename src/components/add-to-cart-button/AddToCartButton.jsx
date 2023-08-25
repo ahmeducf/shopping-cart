@@ -4,7 +4,7 @@ import { addToCartButton } from './AddToCartButton.module.css';
 import { useCartDispatch } from 'hooks';
 import PropTypes from 'prop-types';
 
-function AddToCartButton({ id, quantity }) {
+function AddToCartButton({ id }) {
   const dispatch = useCartDispatch();
 
   const handleClick = () => {
@@ -12,7 +12,6 @@ function AddToCartButton({ id, quantity }) {
       type: 'ADD_TO_CART_REQUEST',
       payload: {
         id,
-        quantity,
       },
     });
   };
@@ -31,7 +30,6 @@ function AddToCartButton({ id, quantity }) {
 
 AddToCartButton.propTypes = {
   id: PropTypes.number.isRequired,
-  quantity: PropTypes.number.isRequired,
 };
 
 export default AddToCartButton;

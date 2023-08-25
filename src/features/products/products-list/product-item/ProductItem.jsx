@@ -9,11 +9,9 @@ import {
 } from './ProductItem.module.css';
 import { Link } from 'react-router-dom';
 import { ItemCount, ItemPrice, AddToCartButton, AddedToCart } from 'components';
-import { useState } from 'react';
 import { useCart } from 'hooks';
 function ProductItem({ product }) {
   const { id, title, price, image } = product;
-  const [count, setCount] = useState(1);
   const { cart } = useCart();
   const isInCart = cart.some((item) => item.id === id);
 
@@ -32,21 +30,13 @@ function ProductItem({ product }) {
         </Link>
         <div className={cardContent}>
           <div className={countAndPrice}>
-            <ItemCount
-              count={Number(count)}
-              setCount={setCount}
-              isInCart={isInCart}
-            />
+            <ItemCount id={Number(id)} />
             <ItemPrice price={price} />
           </div>
           <h3 className={productTitle}>
             <Link to={`/products/${id}`}>{title}</Link>
           </h3>
-          {!isInCart ? (
-            <AddToCartButton id={Number(id)} quantity={count} />
-          ) : (
-            <AddedToCart />
-          )}
+          {!isInCart ? <AddToCartButton id={Number(id)} /> : <AddedToCart />}
         </div>
       </div>
     </li>

@@ -47,6 +47,18 @@ vi.mock('hooks', async () => {
       isLoading: false,
       error: null,
     })),
+    useProducts: vi.fn(() => ({
+      products: {
+        get: vi.fn(() => ({
+          id: 1,
+          title: 'Product title',
+          description: 'Product description',
+          image: 'https://via.placeholder.com/150',
+          quantity: 1,
+          price: 100,
+        })),
+      },
+    })),
   };
 });
 

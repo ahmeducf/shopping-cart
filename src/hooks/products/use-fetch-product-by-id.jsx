@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useProducts, useProductsDispatch } from 'hooks';
+import { useEffect } from 'react';
 
 function useFetchProductById(id) {
-  const [product, setProduct] = useState(null);
-  const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const { products, isLoading, error } = useProducts();
+  const dispatch = useProductsDispatch();
 
   useEffect(() => {
     let isMounted = true;
@@ -14,13 +14,11 @@ function useFetchProductById(id) {
           throw new Error('Server error');
         }
         const data = await response.json();
-        setProduct(data);
-        setError(null);
+        dispatch({ type: 'FETCHED_PRODUCT_BY_ID_SUCCESS', payload: data });
       } catch (error) {
-        setError(error);
-        setProduct(null);
+        dispatch({ type: 'FETCHED_PRODUCT_BY_ID_FAILURE', error: error });
       } finally {
-        setIsLoading(false);
+        dispatch({ type: 'FETCHED_PRODUCT_BY_ID_COMPLETE' });
       }
     }
 
@@ -31,9 +29,9 @@ function useFetchProductById(id) {
     return () => {
       isMounted = false;
     };
-  }, [id]);
+  }, [dispatch, id]);
 
-  return { product, error, isLoading };
+  return { products, error, isLoading };
 }
 
 export default useFetchProductById;

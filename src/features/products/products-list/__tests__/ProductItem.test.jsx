@@ -1,10 +1,30 @@
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import { beforeEach, describe, expect } from 'vitest';
+import { beforeEach, describe, expect, vi } from 'vitest';
 import ProductItem from '../product-item/ProductItem';
 import userEvent from '@testing-library/user-event';
 import ProductsProvider from 'contexts/ProductsContext';
 import CartProvider from 'contexts/CartContext';
+
+vi.mock('hooks', async () => {
+  const actual = await vi.importActual('hooks');
+
+  return {
+    ...actual,
+    useProducts: vi.fn(() => ({
+      products: {
+        get: vi.fn(() => ({
+          id: 1,
+          title: 'Product title',
+          description: 'Product description',
+          image: 'https://via.placeholder.com/150',
+          quantity: 1,
+          price: 100,
+        })),
+      },
+    })),
+  };
+});
 
 describe('ProductItem', () => {
   let product;

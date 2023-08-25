@@ -11,17 +11,38 @@ vi.mock('hooks', async () => {
   return {
     ...actual,
     useFetchProductById: vi.fn(() => ({
-      product: {
-        id: '1',
-        title: 'Product title',
-        price: 10.99,
-        category: 'Electronics',
-        description: 'Product description',
-        image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
+      products: {
+        get: vi.fn(() => ({
+          id: 1,
+          title: 'Product title',
+          description: 'Product description',
+          image: 'https://via.placeholder.com/150',
+          quantity: 1,
+        })),
       },
       isLoading: false,
       error: null,
     })),
+    useProducts: vi.fn(() => ({
+      products: {
+        get: vi.fn(() => ({
+          id: 1,
+          title: 'Product title',
+          description: 'Product description',
+          image: 'https://via.placeholder.com/150',
+          quantity: 1,
+        })),
+      },
+    })),
+  };
+});
+
+vi.mock('react', async () => {
+  const actual = await vi.importActual('react');
+
+  return {
+    ...actual,
+    useParams: vi.fn(() => ({ id: '1' })),
   };
 });
 
