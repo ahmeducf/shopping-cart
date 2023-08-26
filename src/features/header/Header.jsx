@@ -1,16 +1,20 @@
 import { NavLink } from 'react-router-dom';
 import { Nav } from './nav';
 import { Cart } from './cart';
-import { siteHeader, logo } from './Header.module.css';
+import { siteHeader, logo, cart } from './Header.module.css';
 
 function Header() {
   return (
     <header aria-label="Site header" className={siteHeader}>
-      <NavLink to="/" className={logo}>
-        <h1>Fake Store</h1>
-      </NavLink>
+      <div className={logo}>
+        <NavLink to="/">
+          <h1>Fake Store</h1>
+        </NavLink>
+      </div>
       <Nav />
-      <Cart />
+      <div className={cart}>
+        <Cart />
+      </div>
     </header>
   );
 }

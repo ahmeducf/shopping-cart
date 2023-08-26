@@ -1,7 +1,4 @@
 .cart {
-  flex: 20%;
-  display: flex;
-  justify-content: flex-end;
   transition: all 0.3s ease-in-out;
 }
 
