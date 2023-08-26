@@ -18,7 +18,7 @@ function CartItem({ product }) {
 
   return (
     <li className={cartItem}>
-      <Link to="/products/2" className={imageWrapper}>
+      <Link to={`/products/${product.id}`} className={imageWrapper}>
         <img src={product.image} alt={product.title} />
       </Link>
       <div className={detailsWrapper}>
