@@ -26,10 +26,12 @@ function Checkout() {
     return acc + product.quantity;
   }, 0);
 
-  const cartTotalPrice = cart.reduce((acc, item) => {
-    const product = products.get(item.id);
-    return acc + product.price * product.quantity;
-  }, 0);
+  const cartTotalPrice = cart
+    .reduce((acc, item) => {
+      const product = products.get(item.id);
+      return acc + product.price * product.quantity;
+    }, 0)
+    .toFixed(2);
 
   return (
     <main className={checkout}>
