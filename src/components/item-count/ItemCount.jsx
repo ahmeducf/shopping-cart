@@ -8,12 +8,12 @@ function ItemCount({ id }) {
   const dispatch = useProductsDispatch();
 
   const isValueValid = (value) => {
-    return value === '' || value >= 1;
+    return value >= 1 && value <= 99;
   };
 
   const handleInputChange = (e) => {
     const value = e.target.value;
-    if (isValueValid(value)) {
+    if (isValueValid(Number(value))) {
       dispatch({
         type: 'UPDATE_PRODUCT_QUANTITY',
         id: id,
@@ -23,7 +23,7 @@ function ItemCount({ id }) {
   };
 
   const handleDecrease = () => {
-    if (quantity > 1) {
+    if (isValueValid(quantity - 1)) {
       dispatch({
         type: 'UPDATE_PRODUCT_QUANTITY',
         id: id,
@@ -33,11 +33,13 @@ function ItemCount({ id }) {
   };
 
   const handleIncrease = () => {
-    dispatch({
-      type: 'UPDATE_PRODUCT_QUANTITY',
-      id: id,
-      quantity: quantity + 1,
-    });
+    if (isValueValid(quantity + 1)) {
+      dispatch({
+        type: 'UPDATE_PRODUCT_QUANTITY',
+        id: id,
+        quantity: quantity + 1,
+      });
+    }
   };
 
   const handleInputBlur = (e) => {
@@ -61,6 +63,8 @@ function ItemCount({ id }) {
         className={countInput}
         type="number"
         value={quantity}
+        min="1"
+        max="99"
         aria-label="Count"
         role="spinbutton"
         onChange={handleInputChange}
