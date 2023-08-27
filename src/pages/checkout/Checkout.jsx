@@ -23,20 +23,22 @@ function Checkout() {
   const { products } = useProducts();
 
   const cartItemsCount = useMemo(() => {
-    cart.reduce((acc, item) => {
+    return cart.reduce((acc, item) => {
       const product = products.get(item.id);
       return acc + product.quantity;
     }, 0);
   }, [cart, products]);
 
   const cartTotalPrice = useMemo(() => {
-    cart
+    return cart
       .reduce((acc, item) => {
         const product = products.get(item.id);
         return acc + product.price * product.quantity;
       }, 0)
       .toFixed(2);
   }, [cart, products]);
+
+  console.log(cartItemsCount, cartTotalPrice);
 
   return (
     <main className={checkout}>
