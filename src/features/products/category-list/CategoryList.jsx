@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import PropTypes from 'prop-types';
 import {
   faBagShopping,
@@ -56,4 +57,6 @@ CategoryList.propTypes = {
   setSelectedCategory: PropTypes.func.isRequired,
 };
 
-export default CategoryList;
+const memoizedCategoryList = memo(CategoryList);
+
+export default memoizedCategoryList;
