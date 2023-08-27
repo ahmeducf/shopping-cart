@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { CartItem } from 'features/checkout';
 import {
   checkout,
@@ -21,17 +22,21 @@ function Checkout() {
   const { cart } = useCart();
   const { products } = useProducts();
 
-  const cartItemsCount = cart.reduce((acc, item) => {
-    const product = products.get(item.id);
-    return acc + product.quantity;
-  }, 0);
-
-  const cartTotalPrice = cart
-    .reduce((acc, item) => {
+  const cartItemsCount = useMemo(() => {
+    cart.reduce((acc, item) => {
       const product = products.get(item.id);
-      return acc + product.price * product.quantity;
-    }, 0)
-    .toFixed(2);
+      return acc + product.quantity;
+    }, 0);
+  }, [cart, products]);
+
+  const cartTotalPrice = useMemo(() => {
+    cart
+      .reduce((acc, item) => {
+        const product = products.get(item.id);
+        return acc + product.price * product.quantity;
+      }, 0)
+      .toFixed(2);
+  }, [cart, products]);
 
   return (
     <main className={checkout}>
