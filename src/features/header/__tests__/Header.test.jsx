@@ -3,6 +3,30 @@ import Header from '../Header';
 import { describe, expect, it } from 'vitest';
 import { BrowserRouter } from 'react-router-dom';
 
+vi.mock('hooks', async () => {
+  const actual = await vi.importActual('hooks');
+
+  return {
+    ...actual,
+    useCart: vi.fn(() => ({
+      cart: [
+        {
+          id: 1,
+        },
+        {
+          id: 2,
+        },
+        {
+          id: 3,
+        },
+        {
+          id: 4,
+        },
+      ],
+    })),
+  };
+});
+
 describe('Header', () => {
   it('renders a banner', () => {
     render(
