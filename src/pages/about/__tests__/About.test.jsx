@@ -12,7 +12,7 @@ describe('About page', () => {
     );
 
     expect(
-      screen.getByRole('link', { name: /fake store api/i }),
+      screen.getByRole('link', { name: /fakestore api/i }),
     ).toHaveAttribute('href', 'https://fakestoreapi.com/');
   });
 

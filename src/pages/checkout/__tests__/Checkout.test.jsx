@@ -129,7 +129,7 @@ describe('Checkout page', () => {
       </ProductsProvider>,
     );
 
-    expect(screen.getByText('$400')).toBeInTheDocument();
+    expect(screen.getByText(/\$400.00/i)).toBeInTheDocument();
   });
 
   it('should render a list of cart items', () => {
