@@ -6,6 +6,7 @@ function Router() {
     {
       path: '/',
       element: <Root />,
+      errorElement: <Error />,
       children: [
         { index: true, element: <Home /> },
         { path: 'about', element: <About /> },
