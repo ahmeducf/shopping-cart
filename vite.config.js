@@ -1,12 +1,18 @@
+import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import jsconfigPaths from 'vite-jsconfig-paths';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/shopping-cart',
   plugins: [react(), jsconfigPaths()],
   build: {
     rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.html'),
+        redirect: resolve(__dirname, '404.html'),
+      },
       output: {
         manualChunks: {
           react: ['react'],

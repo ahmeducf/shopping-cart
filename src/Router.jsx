@@ -4,7 +4,7 @@ import { Root, Home, About, Products, Product, Checkout, Error } from 'pages';
 function Router() {
   const router = createBrowserRouter([
     {
-      path: '/',
+      path: '/shopping-cart',
       element: <Root />,
       children: [
         { index: true, element: <Home /> },
