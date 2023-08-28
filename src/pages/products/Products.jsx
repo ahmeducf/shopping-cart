@@ -11,6 +11,7 @@ import {
 import { useState } from 'react';
 import { useFetchProducts } from 'hooks';
 import { Error as ErrorPage } from 'pages';
+import { LoadingSpinner } from 'components';
 
 function Products() {
   const { products: productsData, isLoading, error } = useFetchProducts();
@@ -23,7 +24,7 @@ function Products() {
   }
 
   if (isLoading) {
-    return <div style={{ color: 'red' }}>Loading...</div>;
+    return <LoadingSpinner />;
   }
 
   return (

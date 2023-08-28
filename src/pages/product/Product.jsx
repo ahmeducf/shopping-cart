@@ -13,7 +13,13 @@ import {
 } from './Product.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeftLong } from '@fortawesome/free-solid-svg-icons';
-import { AddToCartButton, AddedToCart, ItemCount, ItemPrice } from 'components';
+import {
+  AddToCartButton,
+  AddedToCart,
+  ItemCount,
+  ItemPrice,
+  LoadingSpinner,
+} from 'components';
 import { useCart, useFetchProductById } from 'hooks';
 import { Error } from 'pages';
 
@@ -25,7 +31,7 @@ function Product() {
   const isInCart = cart.some((item) => item.id === Number(id));
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <LoadingSpinner />;
   }
 
   if (error) {
