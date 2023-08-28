@@ -96,7 +96,7 @@
 }
 
 .imageWrapper {
-  background-image: url('src/assets/images/payment-methods.png');
+  background-image: url('/src/assets/images/payment-methods.png');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
