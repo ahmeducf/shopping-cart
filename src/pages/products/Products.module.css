@@ -96,11 +96,13 @@ aside.filtersSidebar {
     background-color: transparent;
     color: #000;
     z-index: 1;
+    transform: translateX(0);
     opacity: 1;
     transition: opacity 1s ease 0.5s;
   }
 
   aside.filtersSidebar.hidden {
+    transform: translateX(-1000%);
     opacity: 0;
     transition: opacity 500ms ease;
   }
