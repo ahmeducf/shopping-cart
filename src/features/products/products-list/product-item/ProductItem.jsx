@@ -6,15 +6,28 @@ import {
   cardContent,
   countAndPrice,
   productTitle,
+  addToCartButton,
 } from './ProductItem.module.css';
 import { Link } from 'react-router-dom';
-import { ItemCount, ItemPrice, AddToCartButton, AddedToCart } from 'components';
-import { useCart } from 'hooks';
+import { ItemCount, ItemPrice, Button, AddedToCart } from 'components';
+import { useCart, useCartDispatch } from 'hooks';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function ProductItem({ product }) {
   const { id, title, price, image } = product;
   const { cart } = useCart();
   const isInCart = cart.some((item) => item.id === id);
+  const dispatch = useCartDispatch();
+
+  const handleClick = () => {
+    dispatch({
+      type: 'ADD_TO_CART_REQUEST',
+      payload: {
+        id,
+      },
+    });
+  };
 
   return (
     <li
@@ -37,7 +50,18 @@ function ProductItem({ product }) {
           <h3 className={productTitle}>
             <Link to={`/products/${id}`}>{title}</Link>
           </h3>
-          {!isInCart ? <AddToCartButton id={Number(id)} /> : <AddedToCart />}
+          {!isInCart ? (
+            <Button
+              className={addToCartButton}
+              onClick={handleClick}
+              ariaLabel={`Add ${title} to cart`}
+            >
+              <FontAwesomeIcon icon={faShoppingCart} />
+              <span>Add to cart</span>
+            </Button>
+          ) : (
+            <AddedToCart />
+          )}
         </div>
       </div>
     </li>

@@ -1,14 +1,17 @@
 import PropTypes from 'prop-types';
-import { DeleteButton, ItemCount, ItemPrice } from 'components';
+import { Button, ItemCount, ItemPrice } from 'components';
 import {
   cartItem,
   imageWrapper,
   detailsWrapper,
   titleAndPriceWrapper,
   countAndRemoveWrapper,
+  deleteButton,
 } from './CartItem.module.css';
 import { Link } from 'react-router-dom';
 import { useCartDispatch } from 'hooks';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 function CartItem({ product }) {
   const dispatch = useCartDispatch();
@@ -27,7 +30,14 @@ function CartItem({ product }) {
           <ItemPrice price={product.price} />
         </Link>
         <div className={countAndRemoveWrapper}>
-          <DeleteButton onClick={handleRemove} />
+          <Button
+            className={deleteButton}
+            onClick={handleRemove}
+            ariaLabel="`Delete ${product.title}`"
+          >
+            <FontAwesomeIcon icon={faTrash} />
+            <span>Delete</span>
+          </Button>
           <ItemCount id={product.id} />
         </div>
       </div>
