@@ -44,6 +44,7 @@ function Products() {
             <CategoryList
               selectedCategory={selectedCategory}
               setSelectedCategory={setSelectedCategory}
+              setIsSidebarOpen={setIsSidebarOpen}
             />
           </div>
         </section>
