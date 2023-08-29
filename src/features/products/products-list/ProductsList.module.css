@@ -3,3 +3,9 @@
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 30px;
 }
+
+@media (max-width: 500px) {
+  .productsList {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}

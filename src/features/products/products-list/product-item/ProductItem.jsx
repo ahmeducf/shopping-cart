@@ -10,6 +10,7 @@ import {
 import { Link } from 'react-router-dom';
 import { ItemCount, ItemPrice, AddToCartButton, AddedToCart } from 'components';
 import { useCart } from 'hooks';
+
 function ProductItem({ product }) {
   const { id, title, price, image } = product;
   const { cart } = useCart();
@@ -25,7 +26,7 @@ function ProductItem({ product }) {
       <div className={card}>
         <Link to={`/products/${id}`}>
           <div className={cardImage}>
-            <img src={image} alt={title} />
+            <img src={image} alt={title} loading="lazy" />
           </div>
         </Link>
         <div className={cardContent}>

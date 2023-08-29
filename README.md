@@ -15,8 +15,8 @@ A fake e-commerce store, built using React and React Router in a Test-Driven-Dev
 ### Development
 
 - React
-- React Router: Client-side routing
-- CSS Modules: Locally scoped CSS rules
+- React Router: client-side routing
+- CSS Modules: locally scoped CSS rules
 - Vite: build tool
 
 ### Testing

@@ -44,3 +44,9 @@
   font-size: 1rem;
   font-weight: 500;
 }
+
+@media (max-width: 500px) {
+  .btn {
+    color: #000;
+  }
+}

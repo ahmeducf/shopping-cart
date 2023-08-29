@@ -16,7 +16,11 @@ import {
   active,
 } from './CategoryList.module.css';
 
-function CategoryList({ selectedCategory, setSelectedCategory }) {
+function CategoryList({
+  selectedCategory,
+  setSelectedCategory,
+  setIsSidebarOpen,
+}) {
   const categories = [
     { id: 1, name: 'All', icon: faStar },
     { id: 2, name: 'Electronics', icon: faLightbulb },
@@ -27,6 +31,7 @@ function CategoryList({ selectedCategory, setSelectedCategory }) {
   const handleClick = (e) => {
     const { category } = e.currentTarget.dataset;
     setSelectedCategory(category);
+    setIsSidebarOpen(false);
   };
 
   return (
@@ -55,8 +60,9 @@ function CategoryList({ selectedCategory, setSelectedCategory }) {
 CategoryList.propTypes = {
   selectedCategory: PropTypes.string.isRequired,
   setSelectedCategory: PropTypes.func.isRequired,
+  setIsSidebarOpen: PropTypes.func.isRequired,
 };
 
-const memoizedCategoryList = memo(CategoryList);
+const MemoizedCategoryList = memo(CategoryList);
 
-export default memoizedCategoryList;
+export default MemoizedCategoryList;
