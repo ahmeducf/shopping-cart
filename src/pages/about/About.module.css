@@ -8,6 +8,18 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  animation: pageAnimation 0.5s ease;
+}
+
+@keyframes pageAnimation {
+  from {
+    opacity: 0;
+    transform: translateX(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .container,
