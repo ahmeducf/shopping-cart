@@ -44,3 +44,68 @@
   margin-bottom: 14px;
   color: #fff;
 }
+
+.toggleButton,
+aside.filtersSidebar {
+  display: none;
+}
+
+@media (max-width: 500px) {
+  .toggleButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .toggleSidebarWrapper {
+    composes: toggleButton;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    transform: scale(1);
+    transition: all 1.5s ease;
+  }
+
+  .toggleSidebarButton {
+    composes: toggleButton;
+    z-index: 2;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+
+  section.filtersSidebar {
+    display: none;
+  }
+
+  .toggleSidebarWrapper.active {
+    transform: scale(75);
+  }
+
+  aside.filtersSidebar {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    background-color: transparent;
+    color: #000;
+    z-index: 1;
+    opacity: 1;
+    transition: opacity 1s ease 0.5s;
+  }
+
+  aside.filtersSidebar.hidden {
+    opacity: 0;
+    transition: opacity 500ms ease;
+  }
+
+  .productsSection {
+    padding: 24px;
+  }
+}
