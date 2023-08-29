@@ -17,7 +17,11 @@ describe('CategoryList', () => {
   it('renders a list of categories with the correct names', () => {
     render(
       <BrowserRouter>
-        <CategoryList selectedCategory="all" setSelectedCategory={() => {}} />
+        <CategoryList
+          selectedCategory="all"
+          setSelectedCategory={() => {}}
+          setIsSidebarOpen={() => {}}
+        />
       </BrowserRouter>,
     );
 
