@@ -1,6 +1,18 @@
 .products {
   flex: 1;
   display: flex;
+  animation: pageAnimation 0.5s ease;
+}
+
+@keyframes pageAnimation {
+  from {
+    opacity: 0;
+    transform: translateX(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .wrapper {
