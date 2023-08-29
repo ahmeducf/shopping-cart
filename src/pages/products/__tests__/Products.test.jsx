@@ -212,7 +212,11 @@ describe('Products', () => {
 
     const user = userEvent.setup();
 
-    await user.click(screen.getAllByRole('button', { name: /Add to cart/ })[0]);
+    await user.click(
+      screen.getAllByRole('button', {
+        name: /Add .* to cart/i,
+      })[0],
+    );
 
     expect(screen.getByText(/Added to cart/i)).toBeInTheDocument();
   });

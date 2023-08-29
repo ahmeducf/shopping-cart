@@ -38,8 +38,6 @@ function Checkout() {
       .toFixed(2);
   }, [cart, products]);
 
-  console.log(cartItemsCount, cartTotalPrice);
-
   return (
     <main className={checkout}>
       <div className={container}>

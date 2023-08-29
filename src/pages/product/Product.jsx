@@ -39,7 +39,7 @@ function Product() {
     dispatch({
       type: 'ADD_TO_CART_REQUEST',
       payload: {
-        id,
+        id: Number(id),
       },
     });
   };

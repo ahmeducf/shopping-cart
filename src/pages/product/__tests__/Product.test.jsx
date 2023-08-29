@@ -152,7 +152,7 @@ describe('Product page', () => {
     );
 
     expect(
-      screen.getByRole('button', { name: /add to cart/i }),
+      screen.getByRole('button', { name: /add.*to cart/i }),
     ).toBeInTheDocument();
   });
 });
