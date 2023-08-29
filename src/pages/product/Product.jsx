@@ -10,17 +10,21 @@ import {
   description,
   addToCartWrapper,
   countAndPrice,
+  addToCartButton,
 } from './Product.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeftLong } from '@fortawesome/free-solid-svg-icons';
 import {
-  AddToCartButton,
+  faArrowLeftLong,
+  faShoppingCart,
+} from '@fortawesome/free-solid-svg-icons';
+import {
+  Button,
   AddedToCart,
   ItemCount,
   ItemPrice,
   LoadingSpinner,
 } from 'components';
-import { useCart, useFetchProductById } from 'hooks';
+import { useCart, useFetchProductById, useCartDispatch } from 'hooks';
 import { Error } from 'pages';
 
 function Product() {
@@ -29,6 +33,16 @@ function Product() {
   const product = products.get(Number(id));
   const { cart } = useCart();
   const isInCart = cart.some((item) => item.id === Number(id));
+  const dispatch = useCartDispatch();
+
+  const handleClick = () => {
+    dispatch({
+      type: 'ADD_TO_CART_REQUEST',
+      payload: {
+        id,
+      },
+    });
+  };
 
   if (isLoading) {
     return <LoadingSpinner />;
@@ -68,7 +82,18 @@ function Product() {
               <ItemCount id={Number(id)} />
               <ItemPrice price={100} />
             </div>
-            {isInCart ? <AddedToCart /> : <AddToCartButton id={product.id} />}
+            {isInCart ? (
+              <AddedToCart />
+            ) : (
+              <Button
+                className={addToCartButton}
+                onClick={handleClick}
+                ariaLabel={`Add ${title} to cart`}
+              >
+                <FontAwesomeIcon icon={faShoppingCart} />
+                <span>Add to cart</span>
+              </Button>
+            )}
           </section>
         </div>
       </div>
