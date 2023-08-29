@@ -50,7 +50,7 @@ aside.filtersSidebar {
   display: none;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 700px) {
   .toggleButton {
     position: fixed;
     bottom: 20px;
