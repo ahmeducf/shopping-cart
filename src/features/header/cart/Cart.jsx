@@ -9,7 +9,7 @@ function Cart() {
   const cartLength = cart.length;
 
   return (
-    <Link to="/checkout" aria-label="Checkout" className={cart}>
+    <Link to="/shopping-cart/checkout" aria-label="Checkout" className={cart}>
       <div className={iconContainer}>
         <FontAwesomeIcon icon={faShoppingCart} />
         {cartLength > 0 && (

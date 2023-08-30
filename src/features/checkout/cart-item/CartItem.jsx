@@ -21,11 +21,17 @@ function CartItem({ product }) {
 
   return (
     <li className={cartItem}>
-      <Link to={`/products/${product.id}`} className={imageWrapper}>
+      <Link
+        to={`/shopping-cart/products/${product.id}`}
+        className={imageWrapper}
+      >
         <img src={product.image} alt={product.title} />
       </Link>
       <div className={detailsWrapper}>
-        <Link to={`/products/${product.id}`} className={titleAndPriceWrapper}>
+        <Link
+          to={`/shopping-cart/products/${product.id}`}
+          className={titleAndPriceWrapper}
+        >
           <h3>Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops</h3>
           <ItemPrice price={product.price} />
         </Link>

@@ -56,7 +56,7 @@ function Product() {
     <main className={productPage}>
       <div className={wrapper}>
         <Link
-          to="/products"
+          to="/shopping-cart/products"
           className={backToProductsLink}
           title="Back to products page"
           aria-label="Back to products page"

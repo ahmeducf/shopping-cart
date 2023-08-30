@@ -37,7 +37,7 @@ function ProductItem({ product }) {
       data-testid="product-item"
     >
       <div className={card}>
-        <Link to={`/products/${id}`}>
+        <Link to={`/shopping-cart/products/${id}`}>
           <div className={cardImage}>
             <img src={image} alt={title} loading="lazy" />
           </div>
@@ -48,7 +48,7 @@ function ProductItem({ product }) {
             <ItemPrice price={price} />
           </div>
           <h3 className={productTitle}>
-            <Link to={`/products/${id}`}>{title}</Link>
+            <Link to={`/shopping-cart/products/${id}`}>{title}</Link>
           </h3>
           {!isInCart ? (
             <Button

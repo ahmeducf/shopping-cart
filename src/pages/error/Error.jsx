@@ -14,7 +14,7 @@ function Error({ error }) {
           ? 'Sorry, an error has occurred. Please try again later.'
           : 'Sorry, the page you are looking for does not exist.'}
       </p>
-      <Link to="/">Go back to the homepage</Link>
+      <Link to="/shopping-cart">Go back to the homepage</Link>
     </main>
   );
 }

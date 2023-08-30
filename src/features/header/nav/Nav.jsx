@@ -8,7 +8,8 @@ function Nav() {
       <ul>
         <li className={navItem}>
           <NavLink
-            to="/"
+            to="/shopping-cart"
+            end
             className={({ isActive }) =>
               isActive ? `${active} ${navItemLink}` : `${navItemLink}`
             }
@@ -18,7 +19,7 @@ function Nav() {
         </li>
         <li className={navItem}>
           <NavLink
-            to="/products"
+            to="/shopping-cart/products"
             className={({ isActive }) =>
               isActive ? `${active} ${navItemLink}` : `${navItemLink}`
             }
@@ -28,7 +29,7 @@ function Nav() {
         </li>
         <li className={navItem}>
           <NavLink
-            to="/about"
+            to="/shopping-cart/about"
             className={({ isActive }) =>
               isActive ? `${active} ${navItemLink}` : `${navItemLink}`
             }
